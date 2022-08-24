@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: bisque;
+            margin-top: 8px;
+            margin-bottom: 8px;
+        }
+        .box.special-box {
+            background-color: darksalmon;
+        }
+        .buttons {
+            display: flex;
+            position: sticky;
+            top: 10px;
+            justify-content: flex-end;
+        }
+        .btn {
+            margin: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="buttons">
+        <button class="btn scroll-by">Scroll by 100px(y)</button>
+        <button class="btn scroll-to">Scroll to 100px(y)</button>
+        <button class="btn scroll-into">Scroll into special</button>
+    </div>
+
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box special-box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+
+    <script>
+        const clickedBox = document.querySelector('.special-box');
+        document.addEventListener('click', (event) => {
+            const domRect = clickedBox.getBoundingClientRect();
+            console.log(domRect);
+            //console.log(`client: ${domRect.x}, ${domRect.y}`);
+            //console.log(`page: ${domRect.x + window.scrollX}, ${domRect.y + window.scrollY}`);
+            console.log(`page: ${event.pageX}, ${event.pageY}`);
+            console.log(`client: ${event.clientX}, ${event.clientY}`);
+        })
+    </script>
+</body>
+</html>
