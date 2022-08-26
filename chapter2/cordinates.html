@@ -17,10 +17,9 @@
             background-color: darksalmon;
         }
         .buttons {
-            display: flex;
-            position: sticky;
-            top: 10px;
-            justify-content: flex-end;
+            position: fixed;
+            top: 20px;
+            right: 20px;
         }
         .btn {
             margin: 2px;
@@ -29,9 +28,9 @@
 </head>
 <body>
     <div class="buttons">
-        <button class="btn scroll-by">Scroll by 100px(y)</button>
-        <button class="btn scroll-to">Scroll to 100px(y)</button>
-        <button class="btn scroll-into">Scroll into special</button>
+        <button class="scroll-by">Scroll by 100px(y)</button>
+        <button class="scroll-to">Scroll to 100px(y)</button>
+        <button class="scroll-into">Scroll into special</button>
     </div>
 
     <div class="box"></div>
@@ -56,15 +55,32 @@
     <div class="box"></div>
 
     <script>
-        const clickedBox = document.querySelector('.special-box');
-        document.addEventListener('click', (event) => {
-            const domRect = clickedBox.getBoundingClientRect();
-            console.log(domRect);
-            //console.log(`client: ${domRect.x}, ${domRect.y}`);
-            //console.log(`page: ${domRect.x + window.scrollX}, ${domRect.y + window.scrollY}`);
-            console.log(`page: ${event.pageX}, ${event.pageY}`);
-            console.log(`client: ${event.clientX}, ${event.clientY}`);
-        })
+        const clickedBox = document.querySelector('.special-box'); 
+
+        // document.addEventListener('click', (event) => {
+        //     const domRect = clickedBox.getBoundingClientRect();
+        //     console.log(domRect);
+        //     //console.log(`client: ${domRect.x}, ${domRect.y}`);
+        //     //console.log(`page: ${domRect.x + window.scrollX}, ${domRect.y + window.scrollY}`);
+        //     console.log(`page: ${event.pageX}, ${event.pageY}`);
+        //     console.log(`client: ${event.clientX}, ${event.clientY}`);
+        // })
+        
+        const btnScrollBy = document.querySelector('.scroll-by');
+        const btnScrollTo= document.querySelector('.scroll-to');
+        const btnScrollInto = document.querySelector('.scroll-into');
+
+        btnScrollBy.addEventListener('click', () => {
+            window.scrollBy({top: 100, left: 0, behavior: 'smooth'});
+        });
+        btnScrollTo.addEventListener('click', () => {
+            window.scrollTo(0, 100);
+        });
+        btnScrollInto.addEventListener('click', () => {
+            // const domRect = clickedBox.getBoundingClientRect();
+            // window.scrollTo(domRect.x + window.scrollX, domRect.y + window.scrollY);
+            clickedBox.scrollIntoView();
+        });
     </script>
 </body>
 </html>
