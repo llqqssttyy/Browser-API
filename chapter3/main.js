@@ -6,15 +6,21 @@ const targetCoor = document.querySelector(".target-coor");
 const row = document.querySelector(".row");
 const col = document.querySelector(".col");
 
-document.addEventListener("mousemove", (event) => {
-    const mouseX = event.clientX;
-    const mouseY = event.clientY;
+addEventListener("load", () => {
+    const targetRect = targetCursor.getBoundingClientRect();
+    const targetHalfWidth = targetRect.width / 2;
+    const targetHalfHeight = targetRect.height / 2;
 
-    targetCoor.innerHTML = `${mouseX}px, ${mouseY}px`;
-    targetCoor.style.top = `${mouseY}px`;
-    targetCoor.style.left = `${mouseX}px`;
-    targetCursor.style.top = `${mouseY}px`;
-    targetCursor.style.left = `${mouseX}px`;
-    row.style.top = `${mouseY}px`;
-    col.style.left = `${mouseX}px`;
+    document.addEventListener("mousemove", (event) => {
+        const mouseX = event.clientX;
+        const mouseY = event.clientY;
+
+        targetCoor.innerHTML = `${mouseX}px, ${mouseY}px`;
+        targetCoor.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+        targetCursor.style.transform = `translate(${
+            mouseX - targetHalfWidth
+        }px, ${mouseY - targetHalfHeight}px)`;
+        row.style.transform = `translateY(${mouseY}px)`;
+        col.style.transform = `translateX(${mouseX}px)`;
+    });
 });
