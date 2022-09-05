@@ -3,6 +3,9 @@
 const items = document.querySelector(".items");
 const input = document.querySelector("#product__input");
 const addBtn = document.querySelector(".add__button");
+const curDate = document.querySelector("information__date");
+
+let date = new Date();
 
 function createItem(text) {
     const itemRow = document.createElement("li");
