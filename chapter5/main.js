@@ -41,6 +41,8 @@ function onAdd() {
         items.appendChild(item);
     }
 
+    item.scrollIntoView({ block: "center" });
+
     input.value = "";
     input.focus();
 }
